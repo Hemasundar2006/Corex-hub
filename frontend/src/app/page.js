@@ -142,29 +142,49 @@ export default function HomePage() {
             </Link>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 sm:gap-4">
-            {categories.slice(0, 12).map((cat) => (
-              <Link
-                key={cat._id || cat.slug}
-                href={`/products/category/${cat.slug}`}
-                className="group bg-[#FFFFFF] rounded-2xl p-4 border border-[#E2E2C5] hover:border-[#C85A32] shadow-xs hover:shadow-md transition-all flex flex-col items-center text-center justify-between gap-2.5"
-              >
-                <div className="w-10 h-10 rounded-xl bg-[#FAF9F0] group-hover:bg-[#FBECE6] text-[#C85A32] flex items-center justify-center transition-colors border border-[#E2E2C5]">
-                  <Cpu className="w-5 h-5" />
-                </div>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 sm:gap-4 auto-rows-[120px]">
+            {categories.slice(0, 12).map((cat, i) => {
+              // Make specific cards larger to create a dynamic layout
+              const isLarge = i === 0 || i === 5 || i === 8;
+              
+              return (
+                <Link
+                  key={cat._id || cat.slug}
+                  href={`/products/category/${cat.slug}`}
+                  className={`group rounded-3xl p-5 border border-[#E2E2C5] hover:border-[#C85A32] shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between overflow-hidden relative
+                    ${isLarge 
+                      ? 'col-span-2 row-span-2 bg-gradient-to-br from-[#FFFFFF] to-[#FBECE6] items-start text-left' 
+                      : 'col-span-1 row-span-1 bg-[#FFFFFF] items-center text-center'}
+                  `}
+                >
+                  <div className={`
+                    rounded-2xl flex items-center justify-center transition-colors border border-[#E2E2C5] z-10
+                    ${isLarge ? 'w-14 h-14 bg-[#FFFFFF] group-hover:bg-[#FCE3D9] text-[#C85A32]' : 'w-10 h-10 bg-[#FAF9F0] group-hover:bg-[#FBECE6] text-[#C85A32]'}
+                  `}>
+                    <Cpu className={isLarge ? 'w-7 h-7' : 'w-5 h-5'} />
+                  </div>
 
-                <div>
-                  <h3 className="text-xs font-bold text-[#1C1917] group-hover:text-[#C85A32] transition-colors line-clamp-2">
-                    {cat.name}
-                  </h3>
-                  {cat.productCount !== undefined && (
-                    <span className="text-[10px] text-[#78716C] mt-0.5 block">
-                      {cat.productCount} items
-                    </span>
+                  <div className="z-10 mt-auto w-full">
+                    <h3 className={`font-black text-[#1C1917] group-hover:text-[#C85A32] transition-colors line-clamp-2
+                      ${isLarge ? 'text-lg md:text-xl' : 'text-xs mt-3'}
+                    `}>
+                      {cat.name}
+                    </h3>
+                    {cat.productCount !== undefined && (
+                      <span className={`text-[#78716C] block font-medium ${isLarge ? 'text-xs mt-1' : 'text-[10px] mt-0.5'}`}>
+                        {cat.productCount} items
+                      </span>
+                    )}
+                  </div>
+                  
+                  {isLarge && (
+                    <div className="absolute -bottom-6 -right-6 opacity-5 group-hover:opacity-10 transition-opacity duration-500">
+                      <Cpu className="w-40 h-40" />
+                    </div>
                   )}
-                </div>
-              </Link>
-            ))}
+                </Link>
+              );
+            })}
           </div>
         </section>
       )}

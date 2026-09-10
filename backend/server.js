@@ -74,6 +74,17 @@ app.delete('/api/admin/clear-db', async (req, res) => {
   }
 });
 
+// Import massive data endpoint
+app.post('/api/admin/import-massive', async (req, res) => {
+  try {
+    const { importMassiveData } = require('./seed/importMassiveData');
+    const result = await importMassiveData();
+    res.status(200).json(result);
+  } catch (error) {
+    res.status(500).json({ success: false, message: 'Import failed', error: error.message });
+  }
+});
+
 // Catch 404 for unknown endpoints
 app.use('*', (req, res) => {
   res.status(404).json({
