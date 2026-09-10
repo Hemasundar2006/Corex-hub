@@ -5,7 +5,6 @@ import { usePathname } from 'next/navigation';
 import DiscountBanner from './DiscountBanner';
 import Navbar from './Navbar';
 import Footer from './Footer';
-import WhatsAppFloat from './WhatsAppFloat';
 import CartDrawer from './CartDrawer';
 import Chatbot from './Chatbot';
 import { CartProvider } from '../lib/cartContext';
@@ -47,7 +46,6 @@ export default function StoreShell({ children }) {
         <Navbar />
         <main className="flex-1">{children}</main>
         <Footer />
-        <WhatsAppFloat />
         <FloatingCartButton />
         <Chatbot />
         <CartDrawer />
