@@ -38,10 +38,10 @@ export default function AdminLayout({ children }) {
   }
 
   return (
-    <div className="min-h-screen flex bg-[#F5F5DC] text-[#1C1917]">
+    <div className="min-h-screen flex flex-col md:flex-row bg-[#F5F5DC] text-[#1C1917]">
       <AdminSidebar />
       <div className="flex-1 flex flex-col min-w-0 overflow-y-auto">
-        <main className="p-6 sm:p-8 lg:p-10 max-w-7xl w-full mx-auto space-y-8">
+        <main className="p-4 sm:p-6 lg:p-10 max-w-7xl w-full mx-auto space-y-6 sm:space-y-8">
           {children}
         </main>
       </div>
