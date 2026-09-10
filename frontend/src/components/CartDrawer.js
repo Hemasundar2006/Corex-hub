@@ -19,12 +19,11 @@ import {
 } from 'lucide-react';
 import { useCart } from '../lib/cartContext';
 import { getCartWhatsAppUrl } from '../lib/whatsapp';
+import { getImageUrl } from '../lib/api';
 
 function CartItemRow({ item, updateQuantity, removeFromCart }) {
   const fallbackImage = 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&auto=format&fit=crop&q=80';
-  const displayImg = item.imageUrl && item.imageUrl.startsWith('/')
-    ? `http://localhost:5000${item.imageUrl}`
-    : (item.imageUrl || fallbackImage);
+  const displayImg = getImageUrl(item.imageUrl, fallbackImage);
 
   const [imgSrc, setImgSrc] = useState(displayImg);
 

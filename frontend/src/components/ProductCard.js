@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { MessageCircle, Eye, CheckCircle2, ShoppingBag, Check } from 'lucide-react';
 import { getProductWhatsAppUrl } from '../lib/whatsapp';
 import { useCart } from '../lib/cartContext';
+import { getImageUrl } from '../lib/api';
 
 export default function ProductCard({
   product,
@@ -16,9 +17,7 @@ export default function ProductCard({
   const [addedAnim, setAddedAnim] = useState(false);
 
   const fallbackImage = 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&auto=format&fit=crop&q=80';
-  const displayImage = product.imageUrl && product.imageUrl.startsWith('/')
-    ? `http://localhost:5000${product.imageUrl}`
-    : (product.imageUrl || fallbackImage);
+  const displayImage = getImageUrl(product.imageUrl, fallbackImage);
 
   const [imgSrc, setImgSrc] = useState(displayImage);
 

@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { X, MessageCircle, CheckCircle2, Share2, Tag, ShoppingBag, Plus, Minus, Check } from 'lucide-react';
 import { getProductWhatsAppUrl } from '../lib/whatsapp';
 import { useCart } from '../lib/cartContext';
+import { getImageUrl } from '../lib/api';
 
 export default function ProductModal({
   product,
@@ -20,9 +21,7 @@ export default function ProductModal({
   const waUrl = getProductWhatsAppUrl(product, businessPhone);
 
   const fallbackImage = 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&auto=format&fit=crop&q=80';
-  const displayImage = product.imageUrl && product.imageUrl.startsWith('/')
-    ? `http://localhost:5000${product.imageUrl}`
-    : (product.imageUrl || fallbackImage);
+  const displayImage = getImageUrl(product.imageUrl, fallbackImage);
 
   const [imgSrc, setImgSrc] = useState(displayImage);
 

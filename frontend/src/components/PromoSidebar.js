@@ -5,14 +5,12 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Gift, MessageCircle, ChevronRight } from 'lucide-react';
 import { getPromotionWhatsAppUrl } from '../lib/whatsapp';
-import api from '../lib/api';
+import api, { getImageUrl } from '../lib/api';
 
 function PromoSidebarItem({ promo, businessPhone }) {
   const waUrl = getPromotionWhatsAppUrl(promo, businessPhone);
   const fallback = 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&auto=format&fit=crop&q=80';
-  const initialImg = promo.imageUrl && promo.imageUrl.startsWith('/')
-    ? `http://localhost:5000${promo.imageUrl}`
-    : (promo.imageUrl || fallback);
+  const initialImg = getImageUrl(promo.imageUrl, fallback);
 
   const [imgSrc, setImgSrc] = useState(initialImg);
 

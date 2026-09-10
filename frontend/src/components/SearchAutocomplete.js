@@ -12,7 +12,7 @@ import {
   Loader2,
   Sparkles,
 } from 'lucide-react';
-import api from '../lib/api';
+import api, { getImageUrl } from '../lib/api';
 
 export default function SearchAutocomplete({
   value = '',
@@ -200,10 +200,7 @@ export default function SearchAutocomplete({
                 {recommendedProducts.map((product) => {
                   const fallbackImg =
                     'https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?w=300&auto=format&fit=crop&q=80';
-                  const prodImg =
-                    product.imageUrl && product.imageUrl.startsWith('/')
-                      ? `http://localhost:5000${product.imageUrl}`
-                      : product.imageUrl || fallbackImg;
+                  const prodImg = getImageUrl(product.imageUrl, fallbackImg);
 
                   return (
                     <button

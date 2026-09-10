@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { MessageCircle, Gift, Check, Sparkles, ShoppingBag } from 'lucide-react';
 import { getPromotionWhatsAppUrl } from '../lib/whatsapp';
 import { useCart } from '../lib/cartContext';
+import { getImageUrl } from '../lib/api';
 
 export default function PromoCard({ promotion, businessPhone = '+919876543210' }) {
   const waUrl = getPromotionWhatsAppUrl(promotion, businessPhone);
@@ -12,9 +13,7 @@ export default function PromoCard({ promotion, businessPhone = '+919876543210' }
   const [added, setAdded] = useState(false);
 
   const fallbackImage = 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&auto=format&fit=crop&q=80';
-  const displayImage = promotion.imageUrl && promotion.imageUrl.startsWith('/')
-    ? `http://localhost:5000${promotion.imageUrl}`
-    : (promotion.imageUrl || fallbackImage);
+  const displayImage = getImageUrl(promotion.imageUrl, fallbackImage);
 
   const [imgSrc, setImgSrc] = useState(displayImage);
 

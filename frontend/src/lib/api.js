@@ -1,4 +1,16 @@
-const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api';
+export const API_HOST = (process.env.NEXT_PUBLIC_API_HOST || 'https://corex-hub.onrender.com').replace(/\/$/, '');
+export const API_BASE = (process.env.NEXT_PUBLIC_API_URL || `${API_HOST}/api`).replace(/\/$/, '');
+
+/**
+ * Universal helper to resolve image URLs whether Unsplash, local, or Render uploaded
+ */
+export function getImageUrl(url, fallback = 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=800&auto=format&fit=crop&q=80') {
+  if (!url) return fallback;
+  if (typeof url !== 'string') return fallback;
+  if (url.startsWith('http://') || url.startsWith('https://')) return url;
+  if (url.startsWith('/')) return `${API_HOST}${url}`;
+  return url;
+}
 
 /**
  * Universal fetch wrapper with authorization headers

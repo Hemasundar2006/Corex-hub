@@ -13,7 +13,7 @@ import {
   CheckCircle2,
   XCircle,
 } from 'lucide-react';
-import api from '../../lib/api';
+import api, { getImageUrl } from '../../lib/api';
 import StatCard from '../../components/admin/StatCard';
 
 export default function AdminDashboardPage() {
@@ -218,7 +218,7 @@ export default function AdminDashboardPage() {
             <tbody className="divide-y divide-[#E2E2C5]">
               {recentProducts.map((p) => {
                 const fallback = 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&auto=format&fit=crop&q=80';
-                const img = p.imageUrl && p.imageUrl.startsWith('/') ? `http://localhost:5000${p.imageUrl}` : (p.imageUrl || fallback);
+                const img = getImageUrl(p.imageUrl, fallback);
                 return (
                   <tr key={p._id} className="hover:bg-[#FAF9F0]/60 transition-colors">
                     <td className="p-4 pl-6">

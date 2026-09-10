@@ -12,7 +12,7 @@ import {
   Eye,
   EyeOff,
 } from 'lucide-react';
-import api from '../../../lib/api';
+import api, { getImageUrl } from '../../../lib/api';
 import ConfirmModal from '../../../components/admin/ConfirmModal';
 
 export default function AdminPromotionsPage() {
@@ -187,9 +187,7 @@ export default function AdminPromotionsPage() {
               ) : promotions.length > 0 ? (
                 promotions.map((promo) => {
                   const fallback = 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&auto=format&fit=crop&q=80';
-                  const img = promo.imageUrl && promo.imageUrl.startsWith('/')
-                    ? `http://localhost:5000${promo.imageUrl}`
-                    : (promo.imageUrl || fallback);
+                  const img = getImageUrl(promo.imageUrl, fallback);
                   const savings = promo.originalPrice > promo.price ? promo.originalPrice - promo.price : 0;
 
                   return (

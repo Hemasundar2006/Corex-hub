@@ -13,7 +13,7 @@ import {
   Link as LinkIcon,
   X,
 } from 'lucide-react';
-import api from '../../../lib/api';
+import api, { getImageUrl } from '../../../lib/api';
 import ConfirmModal from '../../../components/admin/ConfirmModal';
 
 export default function AdminProductsPage() {
@@ -228,9 +228,7 @@ export default function AdminProductsPage() {
               ) : filteredProducts.length > 0 ? (
                 filteredProducts.map((product) => {
                   const fallback = 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&auto=format&fit=crop&q=80';
-                  const img = product.imageUrl && product.imageUrl.startsWith('/')
-                    ? `http://localhost:5000${product.imageUrl}`
-                    : (product.imageUrl || fallback);
+                  const img = getImageUrl(product.imageUrl, fallback);
 
                   return (
                     <tr key={product._id} className="hover:bg-[#FAF9F0]/60 transition-colors">
