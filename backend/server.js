@@ -60,6 +60,20 @@ app.use('/api/admin/discount', discountRoutes);
 app.use('/api/settings', settingsRoutes);
 app.use('/api/admin/settings', settingsRoutes);
 
+// Danger zone: Endpoint to clear the database
+app.delete('/api/admin/clear-db', async (req, res) => {
+  try {
+    const mongoose = require('mongoose');
+    const collections = Object.keys(mongoose.connection.collections);
+    for (const collectionName of collections) {
+      await mongoose.connection.collections[collectionName].deleteMany({});
+    }
+    res.status(200).json({ success: true, message: 'All database collections have been cleared.' });
+  } catch (error) {
+    res.status(500).json({ success: false, message: 'Failed to clear database.', error: error.message });
+  }
+});
+
 // Catch 404 for unknown endpoints
 app.use('*', (req, res) => {
   res.status(404).json({
@@ -84,7 +98,7 @@ const startServer = async () => {
   try {
     await connectDB();
     // Auto-seed initial catalogue and admin user if needed
-    await seedDatabase(false);
+    // await seedDatabase(false);
 
     app.listen(PORT, () => {
       console.log(`\n======================================================`);
