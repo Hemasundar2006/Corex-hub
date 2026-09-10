@@ -8,14 +8,14 @@ const getSettings = async (req, res) => {
     let settings = await Settings.findOne();
     if (!settings) {
       settings = await Settings.create({
-        storeName: 'Corex Projects Hub',
-        tagline: 'Your One-Stop Electronics Components & Project Supplies Hub',
-        businessPhone: process.env.DEFAULT_WHATSAPP_NUMBER || '+919876543210',
-        email: 'orders@corexprojects.com',
-        address: 'Shop #14, Electronics Market Complex, Tech Road, City Center',
+        storeName: 'IoT Garage',
+        tagline: 'Electronics Components & WhatsApp Ordering',
+        businessPhone: process.env.DEFAULT_WHATSAPP_NUMBER || '+919573464809',
+        email: 'orders@iotgarage.com',
+        address: 'Electronics Hardware Market Complex',
         currencySymbol: '₹',
         orderMessageTemplate:
-          'Hello Corex Projects Hub! 👋\nI would like to order:\n📦 Item: {product}\n💰 Price: {currency}{price}\n🏷️ Category: {category}\n🔗 Link: {link}\n\nPlease let me know availability and delivery details!',
+          'Hello IoT Garage! 👋\nI would like to order:\n📦 Item: {product}\n💰 Price: {currency}{price}\n🏷️ Category: {category}\n🔗 Link: {link}\n\nPlease let me know availability and delivery details!',
       });
     }
 

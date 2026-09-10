@@ -156,8 +156,32 @@ app.use((err, req, res, next) => {
 const startServer = async () => {
   try {
     await connectDB();
-    // Auto-seed initial catalogue and admin user if needed
-    // await seedDatabase(false);
+    
+    // Ensure admin user exists
+    const Admin = require('./models/Admin');
+    const Settings = require('./models/Settings');
+    const adminEmail = 'veerapaneniyaswanth5@gmail.com';
+    const adminPassword = 'Yashking606171';
+    
+    const existingAdmin = await Admin.findOne({ email: adminEmail });
+    if (!existingAdmin) {
+      const passwordHash = await Admin.hashPassword(adminPassword);
+      await Admin.create({
+        name: 'IoT Garage Admin',
+        email: adminEmail,
+        passwordHash,
+        role: 'admin',
+      });
+      console.log('👤 Admin account verified:', adminEmail);
+    }
+    await Admin.deleteMany({ email: 'admin@corex.com' });
+
+    // Ensure store settings are branded IoT Garage
+    await Settings.findOneAndUpdate(
+      {},
+      { storeName: 'IoT Garage', tagline: 'Electronics Components & WhatsApp Ordering' },
+      { upsert: true }
+    );
 
     app.listen(PORT, () => {
       console.log(`\n======================================================`);

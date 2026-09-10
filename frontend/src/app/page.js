@@ -59,9 +59,9 @@ export default function HomePage() {
     loadHomeData();
   }, []);
 
-  const businessPhone = settings?.businessPhone || '+919573464809';
-  const storeName = settings?.storeName || 'IoT Garage';
-  const tagline = settings?.tagline || 'Electronics Components & WhatsApp Ordering';
+  const rawStoreName = settings?.storeName || 'IoT Garage';
+  const storeName = rawStoreName.toLowerCase().includes('corex') ? 'IoT Garage' : rawStoreName;
+  const tagline = (settings?.tagline || 'Electronics Components & WhatsApp Ordering').replace(/Corex/gi, 'IoT Garage');
   const generalWaUrl = getGeneralWhatsAppUrl(businessPhone);
 
   const quickTags = ['Arduino', 'ESP32', 'Raspberry Pi', 'Sensors', 'Relays', 'Motors', 'Displays'];

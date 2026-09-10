@@ -7,9 +7,9 @@ import api from '../../../lib/api';
 export default function AdminSettingsPage() {
   const [storeName, setStoreName] = useState('IoT Garage');
   const [tagline, setTagline] = useState('Your One-Stop Electronics Components & Project Supplies Hub');
-  const [businessPhone, setBusinessPhone] = useState('+919876543210');
-  const [email, setEmail] = useState('orders@corexprojects.com');
-  const [address, setAddress] = useState('Shop #14, Electronics Market Complex, Tech Road, City Center');
+  const [businessPhone, setBusinessPhone] = useState('+919573464809');
+  const [email, setEmail] = useState('orders@iotgarage.com');
+  const [address, setAddress] = useState('Electronics Hardware Market Complex');
   const [currencySymbol, setCurrencySymbol] = useState('₹');
   const [orderMessageTemplate, setOrderMessageTemplate] = useState('');
 
@@ -23,8 +23,8 @@ export default function AdminSettingsPage() {
         if (res.settings) {
           setStoreName(res.settings.storeName || 'IoT Garage');
           setTagline(res.settings.tagline || '');
-          setBusinessPhone(res.settings.businessPhone || '+919876543210');
-          setEmail(res.settings.email || 'orders@corexprojects.com');
+          setBusinessPhone(res.settings.businessPhone || '+919573464809');
+          setEmail(res.settings.email || 'orders@iotgarage.com');
           setAddress(res.settings.address || '');
           setCurrencySymbol(res.settings.currencySymbol || '₹');
           setOrderMessageTemplate(res.settings.orderMessageTemplate || '');

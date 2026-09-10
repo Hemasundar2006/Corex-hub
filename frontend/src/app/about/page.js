@@ -113,10 +113,10 @@ export default function AboutPage() {
           <h3 className="font-bold text-base text-[#1C1917]">Email Support</h3>
           <p className="text-xs text-[#57534E]">For institutional tenders & corporate orders</p>
           <a
-            href={`mailto:${settings?.email || 'orders@corexprojects.com'}`}
+            href={`mailto:${settings?.email || 'orders@iotgarage.com'}`}
             className="text-xs font-bold text-[#C85A32] hover:underline block pt-1 truncate"
           >
-            {settings?.email || 'orders@corexprojects.com'}
+            {settings?.email || 'orders@iotgarage.com'}
           </a>
         </div>
       </div>

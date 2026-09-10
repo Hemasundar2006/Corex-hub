@@ -4,22 +4,19 @@ const settingsSchema = new mongoose.Schema(
   {
     storeName: {
       type: String,
-      default: 'Corex Projects Hub',
-      trim: true,
+      default: 'IoT Garage',
     },
     tagline: {
       type: String,
-      default: 'Your One-Stop Electronics Components & Project Supplies Hub',
-      trim: true,
+      default: 'Electronics Components & WhatsApp Ordering',
     },
     businessPhone: {
       type: String,
-      default: '+919876543210',
-      trim: true,
+      default: '+919573464809',
     },
     email: {
       type: String,
-      default: 'contact@corexprojects.com',
+      default: 'orders@iotgarage.com',
       trim: true,
     },
     address: {
