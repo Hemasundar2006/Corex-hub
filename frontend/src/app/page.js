@@ -71,8 +71,23 @@ export default function HomePage() {
       <PageLoader isReady={isDataReady} />
       <div className="space-y-12 sm:space-y-16 pb-20 text-[#1C1917] bg-[#F5F5DC] overflow-x-hidden max-w-[100vw] w-full">
       {/* Clean, Focused Hero Section with Live Search Autocomplete */}
-      <section className="relative overflow-hidden pt-10 pb-12 lg:pt-14 lg:pb-16 border-b border-[#E2E2C5] bg-gradient-to-b from-[#FAF9F0] to-[#F5F5DC]">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
+      <section className="relative overflow-hidden pt-10 pb-12 lg:pt-14 lg:pb-16 border-b border-[#E2E2C5]">
+        {/* Background Video */}
+        <div className="absolute inset-0 z-0">
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-full h-full object-cover opacity-100"
+          >
+            <source src="/hero-video.mp4" type="video/mp4" />
+          </video>
+          {/* Lighter, more transparent overlay to ensure video is highly visible while text remains readable */}
+          <div className="absolute inset-0 bg-white/40 backdrop-blur-[2px]"></div>
+        </div>
+
+        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
           {/* Tagline Badge */}
           <div className="inline-flex items-center gap-2 bg-[#FFFFFF] border border-[#E2E2C5] px-4 py-1.5 rounded-full text-xs font-bold text-[#C85A32] shadow-xs">
             <Cpu className="w-3.5 h-3.5 text-[#C85A32]" />
