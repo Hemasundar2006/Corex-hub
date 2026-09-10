@@ -278,12 +278,12 @@ export default function Chatbot({ businessPhone }) {
       {/* Floating Chat Button */}
       <button
         onClick={() => { setIsOpen(true); setIsMinimized(false); }}
-        className={`fixed bottom-24 right-6 z-40 w-14 h-14 rounded-full shadow-xl transition-all duration-300 flex items-center justify-center
+        className={`fixed bottom-5 right-4 sm:bottom-6 sm:right-6 z-40 w-13 h-13 sm:w-14 sm:h-14 rounded-full shadow-xl transition-all duration-300 flex items-center justify-center
           ${isOpen && !isMinimized ? 'scale-0 opacity-0 pointer-events-none' : 'scale-100 opacity-100'}
-          bg-gradient-to-br from-[#C85A32] to-[#A84422] hover:from-[#B04923] hover:to-[#903D1C] text-white hover:scale-110 active:scale-95`}
+          bg-gradient-to-br from-[#C85A32] to-[#A84422] hover:from-[#B04923] hover:to-[#903D1C] text-white hover:scale-105 active:scale-95`}
         aria-label="Open chat assistant"
       >
-        <Bot className="w-7 h-7" />
+        <Bot className="w-6 h-6 sm:w-7 sm:h-7" />
         {/* Pulsing dot */}
         <span className="absolute -top-0.5 -right-0.5 w-3.5 h-3.5 bg-emerald-500 rounded-full border-2 border-white animate-pulse" />
       </button>
@@ -291,10 +291,10 @@ export default function Chatbot({ businessPhone }) {
       {/* Chat Window */}
       {isOpen && (
         <div
-          className={`fixed right-6 z-50 flex flex-col bg-white rounded-3xl shadow-2xl border border-[#E2E2C5] overflow-hidden transition-all duration-300
-            ${isMinimized ? 'bottom-24 w-72 h-14 rounded-2xl' : 'bottom-24 w-80 sm:w-96 h-[520px]'}
+          className={`fixed right-3 sm:right-6 z-50 flex flex-col bg-white rounded-3xl shadow-2xl border border-[#E2E2C5] overflow-hidden transition-all duration-300
+            ${isMinimized ? 'bottom-5 sm:bottom-6 w-72 h-14 rounded-2xl' : 'bottom-5 sm:bottom-6 w-[calc(100vw-1.5rem)] sm:w-96 h-[500px] sm:h-[520px]'}
           `}
-          style={{ maxHeight: 'calc(100vh - 120px)' }}
+          style={{ maxHeight: 'calc(100vh - 80px)' }}
         >
           {/* Header */}
           <div className="flex items-center justify-between px-4 py-3 bg-gradient-to-r from-[#1C1917] to-[#292524] text-white shrink-0">

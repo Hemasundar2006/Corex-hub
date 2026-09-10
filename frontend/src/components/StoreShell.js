@@ -17,7 +17,7 @@ function FloatingCartButton() {
   return (
     <button
       onClick={openCart}
-      className="fixed bottom-[5.5rem] left-6 z-40 flex items-center gap-2 bg-[#1C1917] hover:bg-[#292524] text-white pl-3 pr-4 py-2.5 rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 active:scale-95"
+      className="fixed bottom-5 left-4 sm:bottom-6 sm:left-6 z-40 flex items-center gap-2 bg-[#1C1917] hover:bg-[#292524] text-white pl-3 pr-4 py-2.5 rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 active:scale-95"
       aria-label="Open cart"
     >
       <div className="relative">

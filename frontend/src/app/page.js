@@ -186,23 +186,23 @@ export default function HomePage() {
               </div>
             </div>
 
-            <div className="pt-6 mt-6 border-t border-[#E2E2C5] flex items-center justify-between">
+            <div className="pt-5 mt-5 border-t border-[#E2E2C5] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
               <Link
                 href="/products"
-                className="inline-flex items-center gap-2 bg-[#C85A32] hover:bg-[#B04923] text-white px-5 py-2.5 rounded-xl font-bold text-xs shadow-sm transition-all"
+                className="inline-flex items-center justify-center gap-2 bg-[#C85A32] hover:bg-[#B04923] text-white px-5 py-2.5 rounded-xl font-bold text-xs shadow-sm transition-all w-full sm:w-auto"
               >
                 <span>Browse 450+ Components</span>
                 <ArrowRight className="w-4 h-4" />
               </Link>
-              <span className="text-xs font-semibold text-[#78716C]">Instant WhatsApp BOM</span>
+              <span className="text-[11px] sm:text-xs font-semibold text-[#78716C]">Instant WhatsApp BOM</span>
             </div>
           </div>
 
           {/* Pillar 2: Project Guidance */}
-          <div className="bg-[#FFFFFF] border border-[#E2E2C5] hover:border-[#C85A32] rounded-3xl p-6 sm:p-8 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between relative overflow-hidden group">
+          <div className="bg-[#FFFFFF] border border-[#E2E2C5] hover:border-[#C85A32] rounded-3xl p-5 sm:p-8 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between relative overflow-hidden group">
             <div className="space-y-4">
-              <div className="w-14 h-14 rounded-2xl bg-[#ECECD0] text-[#1C1917] border border-[#E2E2C5] flex items-center justify-center group-hover:scale-105 transition-transform">
-                <GraduationCap className="w-7 h-7 text-[#C85A32]" />
+              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-[#ECECD0] text-[#1C1917] border border-[#E2E2C5] flex items-center justify-center group-hover:scale-105 transition-transform">
+                <GraduationCap className="w-6 h-6 sm:w-7 sm:h-7 text-[#C85A32]" />
               </div>
               <div>
                 <span className="text-[11px] font-bold uppercase tracking-wider text-[#C85A32]">Engineering Mentorship</span>
@@ -231,19 +231,19 @@ export default function HomePage() {
               </div>
             </div>
 
-            <div className="pt-6 mt-6 border-t border-[#E2E2C5] flex items-center justify-between">
+            <div className="pt-5 mt-5 border-t border-[#E2E2C5] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
               <a
                 href={`https://wa.me/919573464809?text=${encodeURIComponent("Hi IoT Garage! I need guidance for my electronics project. Can you help me?")}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#20BA56] text-white px-5 py-2.5 rounded-xl font-bold text-xs shadow-sm transition-all"
+                className="inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20BA56] text-white px-5 py-2.5 rounded-xl font-bold text-xs shadow-sm transition-all w-full sm:w-auto"
               >
                 <MessageCircle className="w-4 h-4 fill-white" />
                 <span>Get Guidance on WhatsApp</span>
               </a>
               <a
                 href="tel:+919573464809"
-                className="text-xs font-bold text-[#1C1917] hover:text-[#C85A32]"
+                className="text-xs font-bold text-[#1C1917] hover:text-[#C85A32] self-center sm:self-auto"
               >
                 +91 9573464809
               </a>
