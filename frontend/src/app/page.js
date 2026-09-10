@@ -11,6 +11,8 @@ import {
   ArrowRight,
   Package,
   MessageCircle,
+  GraduationCap,
+  CheckCircle2,
 } from 'lucide-react';
 import api from '../lib/api';
 import ProductCard from '../components/ProductCard';
@@ -133,6 +135,122 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* What We Offer Section: Electronic Components & Project Guidance */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center max-w-2xl mx-auto mb-8 space-y-2">
+          <div className="inline-flex items-center gap-2 bg-[#FFFFFF] border border-[#E2E2C5] px-3.5 py-1 rounded-full text-xs font-bold text-[#C85A32] shadow-xs">
+            <Sparkles className="w-3.5 h-3.5 text-[#C85A32]" />
+            <span>Our Core Solutions</span>
+          </div>
+          <h2 className="text-2xl sm:text-4xl font-black text-[#1C1917] tracking-tight">
+            What We Offer
+          </h2>
+          <p className="text-xs sm:text-sm text-[#57534E]">
+            From individual components to end-to-end engineering guidance for your projects.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
+          {/* Pillar 1: Electronic Components */}
+          <div className="bg-[#FFFFFF] border border-[#E2E2C5] hover:border-[#C85A32] rounded-3xl p-6 sm:p-8 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between relative overflow-hidden group">
+            <div className="space-y-4">
+              <div className="w-14 h-14 rounded-2xl bg-[#FBECE6] text-[#C85A32] border border-[#C85A32]/20 flex items-center justify-center group-hover:scale-105 transition-transform">
+                <Cpu className="w-7 h-7" />
+              </div>
+              <div>
+                <span className="text-[11px] font-bold uppercase tracking-wider text-[#C85A32]">Hardware Stock</span>
+                <h3 className="text-xl sm:text-2xl font-black text-[#1C1917] mt-0.5">
+                  Genuine Electronic Components
+                </h3>
+              </div>
+              <p className="text-xs sm:text-sm text-[#57534E] leading-relaxed">
+                Source 450+ tested, ready-to-use electronic components across 33 categories. Ideal for college mini-projects, final year B.Tech/Diploma capstones, and commercial prototyping.
+              </p>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-2">
+                {[
+                  'Microcontrollers (Arduino, ESP32, Pi)',
+                  'Sensors (Temp, Gas, Motion, Distance)',
+                  'Wireless IoT, Bluetooth & GSM Modules',
+                  'Motors, Servos & Motor Drivers',
+                  'OLED, TFT & LCD Displays',
+                  'Breadboards, Tools & Prototyping Wires',
+                ].map((item, idx) => (
+                  <div key={idx} className="flex items-center gap-2 text-xs text-[#44403C]">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-[#25D366] shrink-0" />
+                    <span className="truncate">{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="pt-6 mt-6 border-t border-[#E2E2C5] flex items-center justify-between">
+              <Link
+                href="/products"
+                className="inline-flex items-center gap-2 bg-[#C85A32] hover:bg-[#B04923] text-white px-5 py-2.5 rounded-xl font-bold text-xs shadow-sm transition-all"
+              >
+                <span>Browse 450+ Components</span>
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+              <span className="text-xs font-semibold text-[#78716C]">Instant WhatsApp BOM</span>
+            </div>
+          </div>
+
+          {/* Pillar 2: Project Guidance */}
+          <div className="bg-[#FFFFFF] border border-[#E2E2C5] hover:border-[#C85A32] rounded-3xl p-6 sm:p-8 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between relative overflow-hidden group">
+            <div className="space-y-4">
+              <div className="w-14 h-14 rounded-2xl bg-[#ECECD0] text-[#1C1917] border border-[#E2E2C5] flex items-center justify-center group-hover:scale-105 transition-transform">
+                <GraduationCap className="w-7 h-7 text-[#C85A32]" />
+              </div>
+              <div>
+                <span className="text-[11px] font-bold uppercase tracking-wider text-[#C85A32]">Engineering Mentorship</span>
+                <h3 className="text-xl sm:text-2xl font-black text-[#1C1917] mt-0.5">
+                  Complete Project Guidance
+                </h3>
+              </div>
+              <p className="text-xs sm:text-sm text-[#57534E] leading-relaxed">
+                Stuck on your circuit diagram or code? Get personalized guidance from experienced hardware engineers. We help students and innovators turn project concepts into working prototypes.
+              </p>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-2">
+                {[
+                  'B.Tech & Diploma Project Guidance',
+                  'Component Selection & BOM Planning',
+                  'Circuit Schematics & Pinout Mapping',
+                  'Arduino, ESP32 & Python Code Support',
+                  'Hardware Troubleshooting & Debugging',
+                  'Project Viva & Report Preparation',
+                ].map((item, idx) => (
+                  <div key={idx} className="flex items-center gap-2 text-xs text-[#44403C]">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-[#C85A32] shrink-0" />
+                    <span className="truncate">{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="pt-6 mt-6 border-t border-[#E2E2C5] flex items-center justify-between">
+              <a
+                href={`https://wa.me/919573464809?text=${encodeURIComponent("Hi IoT Garage! I need guidance for my electronics project. Can you help me?")}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#20BA56] text-white px-5 py-2.5 rounded-xl font-bold text-xs shadow-sm transition-all"
+              >
+                <MessageCircle className="w-4 h-4 fill-white" />
+                <span>Get Guidance on WhatsApp</span>
+              </a>
+              <a
+                href="tel:+919573464809"
+                className="text-xs font-bold text-[#1C1917] hover:text-[#C85A32]"
+              >
+                +91 9573464809
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
 
       {/* Curated Categories Section (Browse Hardware by Category) */}
       {categories.length > 0 && (
