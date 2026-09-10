@@ -64,7 +64,7 @@ function ProductsContent() {
         const res = await api.getProducts({
           category: selectedCategory !== 'all' ? selectedCategory : undefined,
           search: searchTerm ? searchTerm.trim() : undefined,
-          limit: 36,
+          limit: 100,
           page: 1,
         });
 
@@ -92,7 +92,7 @@ function ProductsContent() {
       const res = await api.getProducts({
         category: selectedCategory !== 'all' ? selectedCategory : undefined,
         search: searchTerm ? searchTerm.trim() : undefined,
-        limit: 36,
+        limit: 100,
         page: nextPage,
       });
 

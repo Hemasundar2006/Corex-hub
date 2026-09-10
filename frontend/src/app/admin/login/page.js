@@ -7,8 +7,8 @@ import { Cpu, Lock, Mail, ArrowRight, ShieldCheck, AlertCircle } from 'lucide-re
 import { useAuth } from '../../../lib/authContext';
 
 export default function AdminLoginPage() {
-  const [email, setEmail] = useState('admin@corex.com');
-  const [password, setPassword] = useState('admin123');
+  const [email, setEmail] = useState('veerapaneniyaswanth5@gmail.com');
+  const [password, setPassword] = useState('');
   const [errorMsg, setErrorMsg] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -52,11 +52,10 @@ export default function AdminLoginPage() {
         <div className="bg-[#FFFFFF] border border-[#E2E2C5] rounded-2xl p-4 text-xs space-y-1 shadow-xs">
           <div className="flex items-center gap-1.5 font-bold text-[#C85A32]">
             <ShieldCheck className="w-4 h-4 text-[#C85A32]" />
-            <span>Default Administrator Credentials:</span>
+            <span>Admin Login:</span>
           </div>
           <p className="font-mono text-[11px] text-[#57534E]">
-            Email: <b className="text-[#1C1917]">admin@corex.com</b><br />
-            Password: <b className="text-[#1C1917]">admin123</b>
+            Email: <b className="text-[#1C1917]">veerapaneniyaswanth5@gmail.com</b>
           </p>
         </div>
 
@@ -82,7 +81,7 @@ export default function AdminLoginPage() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className="w-full pl-10 pr-4 py-2.5 bg-[#FAF9F0] border border-[#E2E2C5] rounded-xl text-xs sm:text-sm text-[#1C1917] focus:outline-none focus:border-[#C85A32] focus:ring-2 focus:ring-[#C85A32]/20"
-                  placeholder="admin@corex.com"
+                  placeholder="Enter your admin email"
                 />
               </div>
             </div>

@@ -1,4 +1,4 @@
-// Corex Projects Hub Backend Server
+// IoT Garage Backend Server
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
@@ -37,8 +37,8 @@ app.get('/api/health', (req, res) => {
   res.status(200).json({
     status: 'online',
     timestamp: new Date().toISOString(),
-    service: 'Corex Projects Hub Backend API',
-    theme: 'Peach #D96F4C',
+    service: 'IoT Garage Backend API',
+    version: '2.0',
   });
 });
 
@@ -85,6 +85,54 @@ app.post('/api/admin/import-massive', async (req, res) => {
   }
 });
 
+// Combined setup: create admin + clear old data + import all products
+app.post('/api/admin/setup-production', async (req, res) => {
+  try {
+    const Admin = require('./models/Admin');
+    const Category = require('./models/Category');
+    const Product = require('./models/Product');
+    const Settings = require('./models/Settings');
+
+    // Clear existing
+    await Product.deleteMany({});
+    await Category.deleteMany({});
+
+    // Create / update admin
+    const adminEmail = 'veerapaneniyaswanth5@gmail.com';
+    const adminPassword = 'Yashking606171';
+    const passwordHash = await Admin.hashPassword(adminPassword);
+
+    await Admin.findOneAndUpdate(
+      { email: adminEmail },
+      { name: 'IoT Garage Admin', email: adminEmail, passwordHash, role: 'admin' },
+      { upsert: true, new: true }
+    );
+    // Remove old default admin
+    await Admin.deleteMany({ email: 'admin@corex.com' });
+
+    // Update store settings
+    await Settings.findOneAndUpdate(
+      {},
+      { storeName: 'IoT Garage', tagline: 'Electronics Components & WhatsApp Ordering' },
+      { upsert: false }
+    );
+
+    // Import all products
+    const { importMassiveData } = require('./seed/importMassiveData');
+    const result = await importMassiveData();
+
+    res.status(200).json({
+      success: true,
+      message: 'Production setup complete',
+      admin: adminEmail,
+      ...result,
+    });
+  } catch (error) {
+    console.error('Setup production error:', error);
+    res.status(500).json({ success: false, message: 'Setup failed', error: error.message });
+  }
+});
+
 // Catch 404 for unknown endpoints
 app.use('*', (req, res) => {
   res.status(404).json({
@@ -113,7 +161,7 @@ const startServer = async () => {
 
     app.listen(PORT, () => {
       console.log(`\n======================================================`);
-      console.log(`🚀 Corex Projects Hub REST API running on port ${PORT}`);
+      console.log(`🚀 IoT Garage REST API running on port ${PORT}`);
       console.log(`📡 URL: http://localhost:${PORT}`);
       console.log(`✨ Health: http://localhost:${PORT}/api/health`);
       console.log(`======================================================\n`);

@@ -7,7 +7,7 @@ const { processImageUpload, deleteImageFile } = require('../middleware/uploadMid
 // @access  Public
 const getProducts = async (req, res) => {
   try {
-    const { category, search, featured, inStock, limit = 50, page = 1 } = req.query;
+    const { category, search, featured, inStock, limit = 500, page = 1 } = req.query;
     const query = { isActive: true };
 
     // If query specifies category (can be slug or ObjectId)
