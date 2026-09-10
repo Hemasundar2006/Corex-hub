@@ -59,10 +59,10 @@ export default function Navbar() {
             <div className="hidden sm:block">
               <div className="flex items-center gap-1 leading-tight">
                 <span className="text-sm sm:text-base font-black tracking-tight text-[#1C1917]">
-                  COREX
+                  IoT
                 </span>
                 <span className="text-sm sm:text-base font-bold tracking-tight text-[#C85A32]">
-                  Projects Hub
+                  Garage
                 </span>
               </div>
               <p className="text-[9px] tracking-wider uppercase font-semibold text-[#78716C] leading-none">
@@ -70,7 +70,7 @@ export default function Navbar() {
               </p>
             </div>
             <span className="sm:hidden font-black text-[#1C1917] text-sm tracking-tight">
-              COREX <span className="text-[#C85A32]">Hub</span>
+              IoT <span className="text-[#C85A32]">Garage</span>
             </span>
           </Link>
 

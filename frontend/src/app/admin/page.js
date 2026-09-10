@@ -71,7 +71,7 @@ export default function AdminDashboardPage() {
             Store Dashboard
           </h1>
           <p className="text-xs sm:text-sm text-[#57534E] mt-1">
-            Overview of Corex Projects Hub components catalogue and live WhatsApp settings.
+            Overview of IoT Garage components catalogue and live WhatsApp settings.
           </p>
         </div>
 

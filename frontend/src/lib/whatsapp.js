@@ -22,7 +22,7 @@ export const getProductWhatsAppUrl = (product, phone = '+919876543210') => {
   const currency = '₹';
   const pageUrl = typeof window !== 'undefined' ? `${window.location.origin}/products?id=${product._id}` : '';
 
-  const message = `Hello Corex Projects Hub! 👋
+  const message = `Hello IoT Garage! 👋
 
 I would like to place an order for:
 📦 *Product:* ${product.name}
@@ -48,7 +48,7 @@ export const getPromotionWhatsAppUrl = (promotion, phone = '+919876543210') => {
     ? `\n📋 *Included Items:*\n${promotion.items.map((i) => ` • ${i}`).join('\n')}\n`
     : '';
 
-  const message = `Hello Corex Projects Hub! 👋
+  const message = `Hello IoT Garage! 👋
 
 I would like to order this Combo Offer:
 🎁 *Combo Pack:* ${promotion.title}
@@ -63,7 +63,7 @@ Please confirm availability and dispatch timeframe! Thank you.`;
  */
 export const getGeneralWhatsAppUrl = (phone = '+919876543210', customText = '') => {
   const cleanPhone = cleanPhoneForWhatsApp(phone);
-  const defaultMsg = `Hello Corex Projects Hub! 👋\nI have an inquiry regarding electronics components and project supplies. Could you please assist me?`;
+  const defaultMsg = `Hello IoT Garage! 👋\nI have an inquiry regarding electronics components and project supplies. Could you please assist me?`;
   const message = customText || defaultMsg;
 
   return `https://wa.me/${cleanPhone}?text=${encodeURIComponent(message)}`;
@@ -95,7 +95,7 @@ export const getCartWhatsAppUrl = (cartItems = [], customerDetails = {}, phone =
 • *City / State:* ${customerDetails.city || 'Not specified'}
 • *Pincode:* ${customerDetails.pincode || 'Not specified'}${customerDetails.notes ? `\n• *Order / Lab Notes:* ${customerDetails.notes}` : ''}`;
 
-  const message = `Hello Corex Projects Hub! 👋
+  const message = `Hello IoT Garage! 👋
 
 I would like to place an order for the following components:
 

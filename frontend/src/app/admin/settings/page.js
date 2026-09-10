@@ -5,7 +5,7 @@ import { MessageCircle, Save, CheckCircle2, Phone } from 'lucide-react';
 import api from '../../../lib/api';
 
 export default function AdminSettingsPage() {
-  const [storeName, setStoreName] = useState('Corex Projects Hub');
+  const [storeName, setStoreName] = useState('IoT Garage');
   const [tagline, setTagline] = useState('Your One-Stop Electronics Components & Project Supplies Hub');
   const [businessPhone, setBusinessPhone] = useState('+919876543210');
   const [email, setEmail] = useState('orders@corexprojects.com');
@@ -21,7 +21,7 @@ export default function AdminSettingsPage() {
       try {
         const res = await api.getSettings();
         if (res.settings) {
-          setStoreName(res.settings.storeName || 'Corex Projects Hub');
+          setStoreName(res.settings.storeName || 'IoT Garage');
           setTagline(res.settings.tagline || '');
           setBusinessPhone(res.settings.businessPhone || '+919876543210');
           setEmail(res.settings.email || 'orders@corexprojects.com');

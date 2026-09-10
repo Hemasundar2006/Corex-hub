@@ -10,7 +10,7 @@ import { Cpu, Sparkles, CheckCircle2 } from 'lucide-react';
  */
 export default function PageLoader({ isReady = false, onFinished }) {
   const [progress, setProgress] = useState(12);
-  const [statusText, setStatusText] = useState('Connecting to Corex Hub...');
+  const [statusText, setStatusText] = useState('Connecting to IoT Garage...');
   const [isFading, setIsFading] = useState(false);
   const [isMounted, setIsMounted] = useState(true);
 
@@ -35,7 +35,7 @@ export default function PageLoader({ isReady = false, onFinished }) {
         // Data is ready, swiftly reach 100%
         current = 100;
         setProgress(100);
-        setStatusText('Welcome to Corex Projects Hub!');
+        setStatusText('Welcome to IoT Garage!');
         clearInterval(interval);
 
         // Hold 100% briefly for visual satisfaction, then fade out
@@ -66,7 +66,7 @@ export default function PageLoader({ isReady = false, onFinished }) {
         backgroundImage:
           'radial-gradient(circle at 50% 50%, rgba(200, 90, 50, 0.08) 0%, rgba(245, 245, 220, 0.96) 65%, #F5F5DC 100%)',
       }}
-      aria-label="Loading Corex Projects Hub"
+      aria-label="Loading IoT Garage"
       role="status"
     >
       <div className="flex flex-col items-center text-center max-w-sm w-full space-y-6">
@@ -86,7 +86,7 @@ export default function PageLoader({ isReady = false, onFinished }) {
         {/* Brand Title & Tagline */}
         <div className="space-y-1.5">
           <h1 className="text-xl sm:text-2xl font-black tracking-tight text-[#1C1917]">
-            COREX <span className="text-[#C85A32]">PROJECTS HUB</span>
+            IoT <span className="text-[#C85A32]">Garage</span>
           </h1>
           <p className="text-xs text-[#78716C] font-medium tracking-wide uppercase">
             Electronics Components & WhatsApp Ordering

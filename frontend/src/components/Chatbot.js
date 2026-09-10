@@ -5,7 +5,7 @@ import { MessageCircle, X, Send, Bot, User, Sparkles, Minimize2 } from 'lucide-r
 
 const STORE_KNOWLEDGE = {
   store: {
-    name: 'Corex Projects Hub',
+    name: 'IoT Garage',
     tagline: 'Electronics Components & WhatsApp Ordering',
     description: 'An electronics components store specializing in microcontrollers, sensors, ICs, modules, tools, and project kits for students, hobbyists, and engineers.',
     ordering: 'You can order directly via WhatsApp. Browse products, add to cart, fill in your delivery details, and our team will confirm your order on WhatsApp.',
@@ -67,7 +67,7 @@ function generateBotResponse(message, userName, conversationHistory) {
   // Greeting detection
   if (msg.match(/^(hi|hello|hey|hii|helo|yo|sup|namaste|good morning|good evening)/)) {
     if (!userName) {
-      return `Hello there! 👋 Welcome to **Corex Projects Hub** — your go-to electronics store!\n\nI'm CorexBot 🤖, your personal assistant. I can help you find components, suggest project ideas, and guide you through ordering.\n\nMay I know your name?`;
+      return `Hello there! 👋 Welcome to **IoT Garage** — your go-to electronics store!\n\nI'm **IoTBot** 🤖, your personal assistant. I can help you find components, suggest project ideas, and guide you through ordering.\n\nMay I know your name?`;
     }
     return `Hey ${userName}! 😊 Great to see you again! How can I help you today?\n\nYou can ask me about:\n• **Products & components** 🔌\n• **B.Tech project ideas** 💡\n• **How to order** 🛒\n• **Any electronics question** ⚡`;
   }
@@ -130,11 +130,11 @@ function generateBotResponse(message, userName, conversationHistory) {
   }
 
   if (msg.match(/how to order|ordering|buy|purchase|place order/)) {
-    return `🛒 **How to order from Corex:**\n\n1. Browse our catalogue → click **Add to Cart** on any product\n2. When ready, click the cart icon in the navbar\n3. Enter your **delivery details** (name, phone, address, pincode)\n4. Click **Place Order via WhatsApp**\n5. A pre-filled WhatsApp message opens — just **Send it!** ✅\n\nOur team will confirm your order and share payment details.\n\nYou can also message us directly on WhatsApp with your BOM (Bill of Materials)!`;
+    return `🛒 **How to order from IoT Garage:**\n\n1. Browse our catalogue → click **Add to Cart** on any product\n2. When ready, click the cart icon in the navbar\n3. Enter your **delivery details** (name, phone, address, pincode)\n4. Click **Place Order via WhatsApp**\n5. A pre-filled WhatsApp message opens — just **Send it!** ✅\n\nOur team will confirm your order and share payment details.\n\nYou can also message us directly on WhatsApp with your BOM (Bill of Materials)!`;
   }
 
   if (msg.match(/price|cost|rate|how much|cheap|expensive/)) {
-    return `💰 **Pricing at Corex:**\n\nOur prices are displayed on each product card. Here's a rough idea:\n• **Basic sensors** (DHT11, PIR, etc.) – ₹89 to ₹200\n• **Microcontrollers** (Arduino Uno, ESP32) – ₹299 to ₹620\n• **ICs** (555, 7805, L298N) – ₹45 to ₹179\n• **Combo Kits** – ₹419 to ₹1,199\n\nPrices are updated regularly. Browse the catalogue for exact pricing or ask me about a specific component!`;
+    return `💰 **Pricing at IoT Garage:**\n\nOur prices are displayed on each product card. Here's a rough idea:\n• **Basic sensors** (DHT11, PIR, etc.) – ₹89 to ₹200\n• **Microcontrollers** (Arduino Uno, ESP32) – ₹299 to ₹620\n• **ICs** (555, 7805, L298N) – ₹45 to ₹179\n• **Combo Kits** – ₹419 to ₹1,199\n\nPrices are updated regularly. Browse the catalogue for exact pricing or ask me about a specific component!`;
   }
 
   if (msg.match(/delivery|shipping|dispatch|when will i get|how many days/)) {
@@ -197,7 +197,7 @@ export default function Chatbot({ businessPhone }) {
         setMessages([{
           id: Date.now(),
           role: 'bot',
-          text: `Hi there! 👋 Welcome to **Corex Projects Hub**!\n\nI'm **CorexBot** 🤖 — your personal electronics assistant. I can help you find components, suggest project ideas, and guide you through ordering.\n\nWhat's your name? I'd love to assist you personally! 😊`,
+          text: `Hi there! 👋 Welcome to **IoT Garage**!\n\nI'm **IoTBot** 🤖 — your personal electronics assistant. I can help you find components, suggest project ideas, and guide you through ordering.\n\nWhat's your name? I'd love to assist you personally! 😊`,
           time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
         }]);
       }, 400);
@@ -303,7 +303,7 @@ export default function Chatbot({ businessPhone }) {
                 <Bot className="w-4.5 h-4.5" />
               </div>
               <div>
-                <p className="text-sm font-bold leading-tight">CorexBot</p>
+                <p className="text-sm font-bold leading-tight">IoTBot</p>
                 <div className="flex items-center gap-1">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
                   <p className="text-[10px] text-white/70">Online – Ready to help</p>
@@ -415,7 +415,7 @@ export default function Chatbot({ businessPhone }) {
                   value={inputValue}
                   onChange={(e) => setInputValue(e.target.value)}
                   onKeyDown={handleKeyDown}
-                  placeholder={userName ? `Ask CorexBot anything...` : `Type your name to get started...`}
+                  placeholder={userName ? `Ask IoTBot anything...` : `Type your name to get started...`}
                   className="flex-1 text-xs bg-[#FAF9F0] border border-[#E2E2C5] rounded-xl px-3 py-2.5 text-[#1C1917] placeholder:text-[#A8A29E] focus:outline-none focus:border-[#C85A32] focus:ring-1 focus:ring-[#C85A32]"
                 />
                 <button

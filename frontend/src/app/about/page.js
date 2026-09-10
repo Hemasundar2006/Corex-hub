@@ -51,7 +51,7 @@ export default function AboutPage() {
       <div className="text-center max-w-3xl mx-auto space-y-4">
         <div className="inline-flex items-center gap-2 bg-[#FFFFFF] border border-[#E2E2C5] px-3.5 py-1.5 rounded-full text-xs font-bold text-[#C85A32] shadow-xs">
           <Cpu className="w-3.5 h-3.5 text-[#C85A32]" />
-          <span>About Corex Projects Hub</span>
+          <span>About IoT Garage</span>
         </div>
         <h1 className="text-3xl sm:text-5xl font-black text-[#1C1917]">
           Your Trusted Partner for Electronics Components & Maker Supplies

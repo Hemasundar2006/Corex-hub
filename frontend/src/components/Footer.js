@@ -27,9 +27,9 @@ export default function Footer({ businessPhone: propPhone }) {
   }, []);
 
   const businessPhone = propPhone || settings?.businessPhone || '+919573464809';
-  const storeName = settings?.storeName || 'Corex Projects Hub';
+  const storeName = settings?.storeName || 'IoT Garage';
   const storeAddress = settings?.address || 'Shop #14, Electronics Market Complex, Tech Road, City Center';
-  const storeEmail = settings?.email || 'contact@corexprojects.com';
+  const storeEmail = settings?.email || 'contact@iotgarage.in';
   const waUrl = getGeneralWhatsAppUrl(businessPhone);
 
   return (

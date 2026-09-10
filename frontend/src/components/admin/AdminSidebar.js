@@ -39,7 +39,7 @@ export default function AdminSidebar() {
               <Cpu className="w-5 h-5" />
             </div>
             <div>
-              <span className="text-base font-black text-[#1C1917]">COREX</span>{' '}
+              <span className="text-base font-black text-[#1C1917]">IoT Garage</span>{' '}
               <span className="text-xs font-bold uppercase tracking-wider text-[#C85A32] block">
                 Admin Portal
               </span>

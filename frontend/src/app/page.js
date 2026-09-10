@@ -60,7 +60,7 @@ export default function HomePage() {
   }, []);
 
   const businessPhone = settings?.businessPhone || '+919573464809';
-  const storeName = settings?.storeName || 'Corex Projects Hub';
+  const storeName = settings?.storeName || 'IoT Garage';
   const tagline = settings?.tagline || 'Electronics Components & WhatsApp Ordering';
   const generalWaUrl = getGeneralWhatsAppUrl(businessPhone);
 

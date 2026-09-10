@@ -41,7 +41,7 @@ export default function AdminLoginPage() {
             </div>
           </Link>
           <h1 className="text-2xl font-black text-[#1C1917]">
-            Corex Admin Portal
+            IoT Garage Admin Portal
           </h1>
           <p className="text-xs text-[#57534E]">
             Sign in to manage products, categories, combos, and store settings

@@ -34,7 +34,7 @@ export default function PromotionsPage() {
   const businessPhone = settings?.businessPhone || '+919876543210';
   const customWaUrl = getGeneralWhatsAppUrl(
     businessPhone,
-    'Hi Corex Projects Hub! 👋 I am looking for a custom combo bundle / bill-of-materials for our project. Can you provide a quotation?'
+    'Hi IoT Garage! 👋 I am looking for a custom combo bundle / bill-of-materials for our project. Can you provide a quotation?'
   );
 
   return (

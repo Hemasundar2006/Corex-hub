@@ -11,7 +11,7 @@ const plusJakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata = {
-  title: 'Corex Projects Hub | Electronics Components & WhatsApp Ordering',
+  title: 'IoT Garage | Electronics Components & WhatsApp Ordering',
   description:
     'Browse and order microcontrollers, sensors, ICs, modules, and DIY electronics supplies directly via WhatsApp. Fast confirmation, student project friendly, verified components.',
   keywords: [
@@ -21,7 +21,7 @@ export const metadata = {
     'Sensors',
     'WhatsApp Ordering',
     'Robotics Parts',
-    'Corex Projects Hub',
+    'IoT Garage',
   ],
 };
 

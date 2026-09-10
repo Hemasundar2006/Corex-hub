@@ -135,7 +135,7 @@ export default function DedicatedCategoryPage({ params }) {
 
   const generalWaUrl = getGeneralWhatsAppUrl(
     businessPhone,
-    `Hello Corex Projects Hub! 👋 I am browsing the *${categoryName}* category and would like to inquire about component availability and pricing.`
+    `Hello IoT Garage! 👋 I am browsing the *${categoryName}* category and would like to inquire about component availability and pricing.`
   );
 
   return (
