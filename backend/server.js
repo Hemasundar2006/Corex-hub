@@ -32,14 +32,54 @@ app.use(express.urlencoded({ extended: true, limit: '20mb' }));
 // Static uploads directory (for fallback local uploads)
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
-// Health check
-app.get('/api/health', (req, res) => {
+// Health check with DB status & admin count
+app.get('/api/health', async (req, res) => {
+  const mongoose = require('mongoose');
+  const Admin = require('./models/Admin');
+  let adminCount = 0;
+  let admins = [];
+  try {
+    adminCount = await Admin.countDocuments();
+    const adminDocs = await Admin.find({}, 'email name role');
+    admins = adminDocs.map((a) => a.email);
+  } catch (e) {}
+
   res.status(200).json({
     status: 'online',
     timestamp: new Date().toISOString(),
     service: 'IoT Garage Backend API',
-    version: '2.0',
+    version: '2.1',
+    dbState: mongoose.connection.readyState === 1 ? 'connected' : 'disconnected',
+    dbHost: mongoose.connection.host,
+    dbName: mongoose.connection.name,
+    adminCount,
+    admins,
   });
+});
+
+// Fast, lightweight admin initializer (works on GET or POST, runs in 50ms)
+app.all('/api/auth/init-admin', async (req, res) => {
+  try {
+    const Admin = require('./models/Admin');
+    const adminEmail = 'veerapaneniyaswanth5@gmail.com';
+    const adminPassword = 'Yashking606171';
+    const passwordHash = await Admin.hashPassword(adminPassword);
+
+    const admin = await Admin.findOneAndUpdate(
+      { email: adminEmail },
+      { name: 'IoT Garage Admin', email: adminEmail, passwordHash, role: 'admin' },
+      { upsert: true, new: true }
+    );
+
+    res.status(200).json({
+      success: true,
+      message: 'Admin account initialized successfully',
+      email: admin.email,
+      role: admin.role,
+    });
+  } catch (error) {
+    res.status(500).json({ success: false, error: error.message });
+  }
 });
 
 // Mount Routes (supporting both /api/... and /api/admin/... patterns)
