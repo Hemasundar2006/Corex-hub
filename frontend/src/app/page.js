@@ -18,6 +18,7 @@ import ProductModal from '../components/ProductModal';
 import PromoCard from '../components/PromoCard';
 import SearchAutocomplete from '../components/SearchAutocomplete';
 import { getGeneralWhatsAppUrl } from '../lib/whatsapp';
+import PageLoader from '../components/PageLoader';
 
 export default function HomePage() {
   const [categories, setCategories] = useState([]);
@@ -26,13 +27,13 @@ export default function HomePage() {
   const [settings, setSettings] = useState(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedProduct, setSelectedProduct] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [isDataReady, setIsDataReady] = useState(false);
+  const loading = !isDataReady;
 
   useEffect(() => {
     const loadHomeData = async () => {
+      const startTime = Date.now();
       try {
-        setLoading(true);
-
         const [catRes, prodRes, promoRes, setRes] = await Promise.all([
           api.getCategories().catch(() => ({ categories: [] })),
           api.getProducts({ featured: 'true', limit: 4 }).catch(() => ({ products: [] })),
@@ -47,7 +48,11 @@ export default function HomePage() {
       } catch (err) {
         console.error('Error loading home data:', err);
       } finally {
-        setLoading(false);
+        const elapsed = Date.now() - startTime;
+        const remaining = Math.max(0, 650 - elapsed);
+        setTimeout(() => {
+          setIsDataReady(true);
+        }, remaining);
       }
     };
 
@@ -62,7 +67,9 @@ export default function HomePage() {
   const quickTags = ['Arduino', 'ESP32', 'Raspberry Pi', 'Sensors', 'Relays', 'Motors', 'Displays'];
 
   return (
-    <div className="space-y-12 sm:space-y-16 pb-20 text-[#1C1917] bg-[#F5F5DC] overflow-x-hidden max-w-[100vw] w-full">
+    <>
+      <PageLoader isReady={isDataReady} />
+      <div className="space-y-12 sm:space-y-16 pb-20 text-[#1C1917] bg-[#F5F5DC] overflow-x-hidden max-w-[100vw] w-full">
       {/* Clean, Focused Hero Section with Live Search Autocomplete */}
       <section className="relative overflow-hidden pt-10 pb-12 lg:pt-14 lg:pb-16 border-b border-[#E2E2C5] bg-gradient-to-b from-[#FAF9F0] to-[#F5F5DC]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
@@ -290,5 +297,6 @@ export default function HomePage() {
         />
       )}
     </div>
+    </>
   );
 }
