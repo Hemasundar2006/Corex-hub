@@ -61,6 +61,7 @@ export default function HomePage() {
     loadHomeData();
   }, []);
 
+  const businessPhone = settings?.businessPhone || '+919573464809';
   const rawStoreName = settings?.storeName || 'IoT Garage';
   const storeName = rawStoreName.toLowerCase().includes('corex') ? 'IoT Garage' : rawStoreName;
   const tagline = (settings?.tagline || 'Electronics Components & WhatsApp Ordering').replace(/Corex/gi, 'IoT Garage');
